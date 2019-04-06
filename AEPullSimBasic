@@ -9,7 +9,7 @@ class AEPullSim
 {
 	public static void main (String[] args) throws java.lang.Exception
 	{
-		int reps = 100000;	//Let's try pulling 100000 5 star units!
+		int reps = 100000;	//Let's try pulling 10000 5 star units!
 		
 		int sPulls = 0;		//How many single pulls we do
 		int mPulls = 0;		//How many multi pulls we do
@@ -19,8 +19,12 @@ class AEPullSim
 		double rand;
 		
 		//Basic banner
-		double sProb[] = {0.54, 0.274, 0.13, 0.028, 0.028};	//Default probabilities
-		double mProb[] = {0, 0, 0.872, 0.092, 0.036};		//Probability for 10th unit on multi pull
+		//double sProb[] = {0.54, 0.274, 0.13, 0.028, 0.028};	//Default probabilities
+		//double mProb[] = {0, 0, 0.872, 0.092, 0.036};		//Probability for 10th unit on multi pull
+		
+		//IDA#1 banner
+		double sProb[] = {0.552, 0.2562, 0.1348, 0.0245, 0.0325};	//Default probabilities
+		double mProb[] = {0, 0, 0.8647, 0.0993, 0.036};		//Probability for 10th unit on multi pull
 		
 		boolean fiveStar;
 		
