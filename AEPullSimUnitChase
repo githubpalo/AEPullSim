@@ -1,11 +1,11 @@
-/* Basic Pull Simulator for Another Eden */
+// Basic Pull Simulator for Another Eden for Chasing a Specific 4*/5* Unit
 
 import java.util.*;
 import java.lang.*;
 import java.io.*;
 
 /* Name of the class has to be "Main" only if the class is public. */
-class AEPullSim
+class AEPullSimUnitChase
 {
 	public static void main (String[] args) throws java.lang.Exception
 	{
@@ -19,12 +19,17 @@ class AEPullSim
 		double rand;
 		
 		//Basic banner
-		double sProb[] = {0.54, 0.274, 0.13, 0.028, 0.028};	//Default probabilities
-		double mProb[] = {0, 0, 0.872, 0.092, 0.036};		//Probability for 10th unit on multi pull
+		//double sProb[] = {0.54, 0.274, 0.13, 0.028, 0.028};	//Default probabilities
+		//double mProb[] = {0, 0, 0.872, 0.092, 0.036};		//Probability for 10th unit on multi pull
 		
 		//IDA#1 banner
 		//double sProb[] = {0.552, 0.2562, 0.1348, 0.0245, 0.0325};	//Default probabilities
 		//double mProb[] = {0, 0, 0.8647, 0.0993, 0.036};		//Probability for 10th unit on multi pull
+		
+		//Specific Unit - Let's say you want ONLY Isuka from IDA#1 banner
+		//I'm just going to move all the other 5* units into the 4.5* catagory
+		double sProb[] = {0.552, 0.2562, 0.1348, 0.045, 0.012};	//Default probability of only 4*/5* Isuka
+		double mProb[] = {0, 0, 0.8647, 0.1123, 0.023};		//Probability for 4*/5* Isuka as 10th unit on multi pull
 		
 		boolean fiveStar;
 		
@@ -112,20 +117,20 @@ class AEPullSim
 		
 		System.out.println("-----Single Pull-----");
 		System.out.println(Integer.toString(sPulls)+" pulls done");
-		System.out.println(Double.toString((double)sPulls/(double)reps)+" average units pulled to find a 5*");
+		System.out.println(Double.toString((double)sPulls/(double)reps)+" average units pulled to find the desired unit");
 		System.out.println(Integer.toString(sPull[0])+" 3.0 star ("+Double.toString((((double)sPull[0]*100)/(double)sPulls))+"%)");
 		System.out.println(Integer.toString(sPull[1])+" 3.5 star ("+Double.toString((((double)sPull[1]*100)/(double)sPulls))+"%)");
 		System.out.println(Integer.toString(sPull[2])+" 4.0 star ("+Double.toString((((double)sPull[2]*100)/(double)sPulls))+"%)");
-		System.out.println(Integer.toString(sPull[3])+" 4.5 star ("+Double.toString((((double)sPull[3]*100)/(double)sPulls))+"%)");
-		System.out.println(Integer.toString(sPull[4])+" 5.0 star ("+Double.toString((((double)sPull[4]*100)/(double)sPulls))+"%)");
+		System.out.println(Integer.toString(sPull[3])+" 4.5+5.0 star ("+Double.toString((((double)sPull[3]*100)/(double)sPulls))+"%)");
+		System.out.println(Integer.toString(sPull[4])+" Desired Unit ("+Double.toString((((double)sPull[4]*100)/(double)sPulls))+"%)");
 		System.out.println("-----Multi Pull-----");
 		System.out.println(Integer.toString(mPulls)+" pulls done ("+Integer.toString(mPulls/10)+" 10x pulls)");
-		System.out.println(Double.toString((double)mPulls/(double)reps)+" average units pulled to find a 5*");
+		System.out.println(Double.toString((double)mPulls/(double)reps)+" average units pulled to find the desired unit");
 		System.out.println(Integer.toString(mPull[0])+" 3.0 star ("+Double.toString((((double)mPull[0]*100)/(double)mPulls))+"%)");
 		System.out.println(Integer.toString(mPull[1])+" 3.5 star ("+Double.toString((((double)mPull[1]*100)/(double)mPulls))+"%)");
 		System.out.println(Integer.toString(mPull[2])+" 4.0 star ("+Double.toString((((double)mPull[2]*100)/(double)mPulls))+"%)");
-		System.out.println(Integer.toString(mPull[3])+" 4.5 star ("+Double.toString((((double)mPull[3]*100)/(double)mPulls))+"%)");
-		System.out.println(Integer.toString(mPull[4])+" 5.0 star ("+Double.toString((((double)mPull[4]*100)/(double)mPulls))+"%)");
+		System.out.println(Integer.toString(mPull[3])+" 4.5+5.0 star ("+Double.toString((((double)mPull[3]*100)/(double)mPulls))+"%)");
+		System.out.println(Integer.toString(mPull[4])+" Desired Unit83.71 ("+Double.toString((((double)mPull[4]*100)/(double)mPulls))+"%)");
 		
 	}
 }
