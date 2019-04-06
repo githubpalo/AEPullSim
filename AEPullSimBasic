@@ -112,7 +112,7 @@ class AEPullSim
 		
 		System.out.println("-----Single Pull-----");
 		System.out.println(Integer.toString(sPulls)+" pulls done.");
-		System.out.println(Double.toString(sPulls/reps)+" average pulls.");
+		System.out.println(Double.toString((double)sPulls/(double)reps)+" average pulls.");
 		System.out.println(Integer.toString(sPull[0])+" 3.0 star ("+Double.toString((((double)sPull[0]*100)/(double)sPulls))+"%)");
 		System.out.println(Integer.toString(sPull[1])+" 3.5 star ("+Double.toString((((double)sPull[1]*100)/(double)sPulls))+"%)");
 		System.out.println(Integer.toString(sPull[2])+" 4.0 star ("+Double.toString((((double)sPull[2]*100)/(double)sPulls))+"%)");
@@ -120,7 +120,7 @@ class AEPullSim
 		System.out.println(Integer.toString(sPull[4])+" 5.0 star ("+Double.toString((((double)sPull[4]*100)/(double)sPulls))+"%)");
 		System.out.println("-----Multi Pull-----");
 		System.out.println(Integer.toString(mPulls)+" pulls done.");
-		System.out.println(Double.toString(mPulls/reps)+" average pulls.");
+		System.out.println(Double.toString((double)mPulls/(double)reps)+" average pulls.");
 		System.out.println(Integer.toString(mPull[0])+" 3.0 star ("+Double.toString((((double)mPull[0]*100)/(double)mPulls))+"%)");
 		System.out.println(Integer.toString(mPull[1])+" 3.5 star ("+Double.toString((((double)mPull[1]*100)/(double)mPulls))+"%)");
 		System.out.println(Integer.toString(mPull[2])+" 4.0 star ("+Double.toString((((double)mPull[2]*100)/(double)mPulls))+"%)");
