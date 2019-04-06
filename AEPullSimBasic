@@ -9,7 +9,7 @@ class AEPullSim
 {
 	public static void main (String[] args) throws java.lang.Exception
 	{
-		int reps = 100000;	//Let's try pulling 10000 5 star units!
+		int reps = 100000;	//Let's try pulling 100000 5 star units!
 		
 		int sPulls = 0;		//How many single pulls we do
 		int mPulls = 0;		//How many multi pulls we do
