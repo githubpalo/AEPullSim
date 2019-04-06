@@ -1,0 +1,136 @@
+/* Basic Pull Simulator for Another Eden (For Chasing a Specific Unit)*/
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class AEPullSimUnitChase
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		int reps = 100000;	//Let's try pulling 100000 5 star units!
+		
+		int sPulls = 0;		//How many single pulls we do
+		int mPulls = 0;		//How many multi pulls we do
+		int sPull[] = {0, 0, 0, 0, 0};	//3*, 3.5*, 4*, 4.5*, 5* respectively
+		int mPull[] = {0, 0, 0, 0, 0};	//3*, 3.5*, 4*, 4.5*, 5* respectively
+		
+		double rand;
+		
+		//Basic banner
+		//double sProb[] = {0.54, 0.274, 0.13, 0.028, 0.028};	//Default probabilities
+		//double mProb[] = {0, 0, 0.872, 0.092, 0.036};		//Probability for 10th unit on multi pull
+		
+		//IDA#1 banner
+		//double sProb[] = {0.552, 0.2562, 0.1348, 0.0245, 0.0325};	//Default probabilities
+		//double mProb[] = {0, 0, 0.8647, 0.0993, 0.036};		//Probability for 10th unit on multi pull
+		
+		//Specific Unit - Let's say you want ONLY Isuka from IDA#1 banner
+		//I'm just going to move all the other 5* units into the 4.5* catagory
+		double sProb[] = {0.552, 0.2562, 0.1348, 0.045, 0.012};	//Default probability of only 4*/5* Isuka
+		double mProb[] = {0, 0, 0.8647, 0.1123, 0.023};		//Probability for 4*/5* Isuka as 10th unit on multi pull
+		
+		boolean fiveStar;
+		
+		//Single pull logic
+		while(sPull[4] < reps)
+		{
+			fiveStar = false;
+			
+			while(fiveStar == false)
+			{
+				rand = Math.random();
+				sPulls++;
+				
+				for(int j = 0; j < 5; j++)
+				{
+					if(rand < sProb[j])
+					{
+						sPull[j]++;
+						
+						if(j == 4)
+						{
+							fiveStar = true;
+						}
+							
+						break;
+					}
+					else
+						rand -= sProb[j];
+				}
+			}
+		}
+		
+		//Multi pull logic
+		while(mPull[4] < reps)
+		{
+			fiveStar = false;
+			
+			while(fiveStar == false)
+			{
+				mPulls += 10;
+				
+				//Simulate a 10 pull
+				for(int k = 0; k < 10; k++)
+				{
+					rand = Math.random();
+					
+					for(int j = 0; j < 5; j++)
+					{
+						if(k == 9)	//Special logic for 10th unit
+						{
+							if(rand < mProb[j])
+							{
+								mPull[j]++;
+								
+								if(j == 4)
+								{
+									fiveStar = true;
+								}
+									
+								break;
+							}
+							else
+								rand -= mProb[j];
+						}
+						else	//Logic is the same as single pulling on units 1-9
+						{
+							if(rand < sProb[j])
+							{
+								mPull[j]++;
+								
+								if(j == 4)
+								{
+									fiveStar = true;
+								}
+									
+								break;
+							}
+							else
+								rand -= sProb[j];
+						}
+					}
+				}
+			}
+		}
+		
+		System.out.println("-----Single Pull-----");
+		System.out.println(Integer.toString(sPulls)+" pulls done.");
+		System.out.println(Double.toString((double)sPulls/(double)reps)+" average pulls.");
+		System.out.println(Integer.toString(sPull[0])+" 3.0 star ("+Double.toString((((double)sPull[0]*100)/(double)sPulls))+"%)");
+		System.out.println(Integer.toString(sPull[1])+" 3.5 star ("+Double.toString((((double)sPull[1]*100)/(double)sPulls))+"%)");
+		System.out.println(Integer.toString(sPull[2])+" 4.0 star ("+Double.toString((((double)sPull[2]*100)/(double)sPulls))+"%)");
+		System.out.println(Integer.toString(sPull[3])+" 4.5 star ("+Double.toString((((double)sPull[3]*100)/(double)sPulls))+"%)");
+		System.out.println(Integer.toString(sPull[4])+" 5.0 star ("+Double.toString((((double)sPull[4]*100)/(double)sPulls))+"%)");
+		System.out.println("-----Multi Pull-----");
+		System.out.println(Integer.toString(mPulls)+" pulls done.");
+		System.out.println(Double.toString((double)mPulls/(double)reps)+" average pulls.");
+		System.out.println(Integer.toString(mPull[0])+" 3.0 star ("+Double.toString((((double)mPull[0]*100)/(double)mPulls))+"%)");
+		System.out.println(Integer.toString(mPull[1])+" 3.5 star ("+Double.toString((((double)mPull[1]*100)/(double)mPulls))+"%)");
+		System.out.println(Integer.toString(mPull[2])+" 4.0 star ("+Double.toString((((double)mPull[2]*100)/(double)mPulls))+"%)");
+		System.out.println(Integer.toString(mPull[3])+" 4.5 star ("+Double.toString((((double)mPull[3]*100)/(double)mPulls))+"%)");
+		System.out.println(Integer.toString(mPull[4])+" 5.0 star ("+Double.toString((((double)mPull[4]*100)/(double)mPulls))+"%)");
+		
+	}
+}
